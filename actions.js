@@ -476,7 +476,7 @@ class Actions {
     /** @param {NextActionEntry[]} records */
     appendActionRecords(records) {
         for (const record of records) {
-            this.addActionRecord(record, -1, false);
+            this.addActionRecord({...record}, -1, false);
         }
     }
 
