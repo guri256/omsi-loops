@@ -88,10 +88,14 @@
     <define name="conditionalRules" combine="choice">
         <choice>
             <element name="if">
+                <a:documentation>Execute a numeric evaluation and perform a test on its result.</a:documentation>
+                <il:label>If arbitrary value</il:label>
                 <ref name="numericEvaluation" />
                 <ref name="numericTests" />
             </element>
             <element name="ifCurrentValue">
+                <a:documentation>Test the current value of the numeric evaluation.</a:documentation>
+                <il:label>If current evaluation</il:label>
                 <ref name="numericCondition" />
             </element>
             <element name="ifResource">
