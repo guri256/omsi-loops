@@ -2096,12 +2096,6 @@ const Koviko = {
 
      this.totalDisplay.parentElement.classList.remove('expired');
 
-      if (getNumOnCurList("Open Portal")>0 && (getNumOnList("Open Portal")==0)) {
-        this.totalDisplay.innerHTML +="PORTAL MISSING";
-        this.totalDisplay.style.color="var(--predictor-warning-color)";
-      } else {
-        this.totalDisplay.style.color="";
-      }
 
       // Log useful debugging data
       if (isDebug) {

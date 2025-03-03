@@ -10,7 +10,7 @@ declare interface Action<const N, const E> {
     cost?: () => void,
     manaCost(): number;
     goldCost?: () => number;
-    allowed?: () => number;
+    allowed?: (checkActiveList?: boolean) => number;
     visible(): boolean;
     unlocked(): boolean;
     finish(): void;

@@ -245,7 +245,7 @@ class Actions {
         if (!curAction) {
             return curAction;
         }
-        if (curAction.allowed && getNumOnCurList(curAction.name) > curAction.allowed()) {
+        if (curAction.allowed && getNumOnCurList(curAction.name) > curAction.allowed(true)) {
             curAction.ticks = 0;
             curAction.timeSpent = 0;
             curAction.effectiveTimeElapsed = 0;
