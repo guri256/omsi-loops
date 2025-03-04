@@ -296,8 +296,7 @@ class Skill extends Localizable {
     //}
     getBonus() {
         if (this.#bonusCalc !== this.levelExp.level) {
-            this.#bonus = Math.pow(this.Addition + this.levelExp.level * this.multiplier, this.exponent)
-                        : 0;
+            this.#bonus = Math.pow(this.Addition + this.levelExp.level * this.multiplier, this.exponent);
             this.#bonusCalc = this.levelExp.level;
         }
         return this.#bonus;
