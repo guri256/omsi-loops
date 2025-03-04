@@ -5635,6 +5635,7 @@ Action.GreatFeast = new MultipartAction("Great Feast", {
         return Math.ceil(5000 * (getBuffLevel("Feast") + 1) * getSkillBonus("Gluttony"));
     },
     finish() {
+        setStoryFlag("feastAttempted")
         view.requestUpdate("updateBuff", "Feast");
     },
 });
@@ -6426,6 +6427,8 @@ Action.Escape = new Action("Escape", {
         unlockTown(7);
     },
     story(completed) {
+        //FIXME: This will (unfortunately) give the story completion for creating the looping potion, even
+        //if the player didn't, because completing story N will also complete all stories less than N.
         unlockGlobalStory(10);
     },
 });
@@ -7318,11 +7321,14 @@ Action.ImbueSoul = new MultipartAction("Imbue Soul", {
     storyReqs(storyNum) {
         switch(storyNum) {
             case 1: return storyFlags.soulInfusionAttempted;
-            case 2: return buffs["Imbuement3"].amt > 0;
-            case 3: return buffs["Imbuement3"].amt > 6;
-            case 4: return buffs["Imbuement"].amt > 499
-                        && buffs["Imbuement2"].amt > 499
-                        && buffs["Imbuement3"].amt > 6;
+            //Protect these with a check for soulInfusionAttempted, so they don't "finish" instantly
+            //on prestige.
+            case 2: return storyFlags.soulInfusionAttempted && buffs["Imbuement3"].amt > 0;
+            case 3: return storyFlags.soulInfusionAttempted && buffs["Imbuement3"].amt > 6;
+            case 4: return storyFlags.soulInfusionAttempted &&
+                        buffs["Imbuement"].amt > 499 &&
+                        buffs["Imbuement2"].amt > 499 &&
+                        buffs["Imbuement3"].amt > 6;
         }
     },
     stats: {
@@ -7369,6 +7375,7 @@ Action.ImbueSoul = new MultipartAction("Imbue Soul", {
         return getBuffLevel("Imbuement") > 499 && getBuffLevel("Imbuement2") > 499;
     },
     finish() {
+        setStoryFlag("soulInfusionAttempted")
         view.requestUpdate("updateBuff", "Imbuement3");
         capAllTraining();
         adjustTrainingExpMult();

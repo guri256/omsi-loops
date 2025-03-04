@@ -728,7 +728,13 @@ function markActionsComplete(loopCompletedActions) {
 function actionStory(loopCompletedActions) {
     loopCompletedActions.forEach(action => {
         let completed = action.loops - action.loopsLeft;
-        if (action.story !== undefined) action.story(completed);
+        //Test for completed, because all of the actions in .story(completed) assume it was successfully
+        //completed.  Without this we advance the story by putting an action in the list rather than
+        // completing it.  We should really have a hook for failure as well.
+        if (completed > 0 && action.story !== undefined)
+        {
+            action.story(completed);
+        }
     });
 }
 
