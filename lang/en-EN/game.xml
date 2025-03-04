@@ -3490,7 +3490,6 @@
             <tooltip><![CDATA[
             Resets all talent levels, soulstones, imbue mind and imbue body. Other skills and buffs are unchanged.<br>
             Requires both 500 Imbue Mind and 500 Imbue Body.<br>
-            Requires surveying 100% of the zone.<br>
             Increases the exp multiplier of training actions by 100% and raises all action speeds by 50% per level.
             ]]></tooltip>
             <story_1><![CDATA[<b>Attempted soul infusion:</b>⮀ As you explore the valley-that-should-be-a-mountain, you come across an improvised-looking altar. The energy surrounding it reminds you of the altar on Mount Olympus where you awaited the judgement of the gods, but twisted like the dark energies you've felt along the Forest Path...]]></story_1>
