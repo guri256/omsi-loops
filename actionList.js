@@ -6460,7 +6460,7 @@ Action.OpenPortal = new Action("Open Portal", {
         return getExploreProgress() > 50;
     },
     unlocked() {
-        return getExploreProgress() >= 75;
+        return getExploreProgress() >= 75 && getSkillLevel("Restoration") >= 1000;
     },
     canStart() {
         return getSkillLevel("Restoration") >= 1000;
