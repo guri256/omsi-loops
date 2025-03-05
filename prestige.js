@@ -141,11 +141,11 @@ function prestigeConfirmation() {
 
 /** @param {PrestigeBuffName} prestigeSelected */
 function getPrestigeCost(prestigeSelected) {
-    var currentCost = 30;
+    var currentCost = (5 * Math.pow(getBuffLevel(prestigeSelected), 2) / 2) + (5 * getBuffLevel(prestigeSelected) / 2) + 25; //This formula is the same as the old one, but compressed, and probably easier to compute.
 
-    for (var i = 0; i < getBuffLevel(prestigeSelected); i++) {
-        currentCost += 10 + (5 * i)
-    }
+    //for (var i = 0; i < getBuffLevel(prestigeSelected); i++) {
+    //    currentCost += 10 + (5 * i)
+    //}
 
     return currentCost;
 }
