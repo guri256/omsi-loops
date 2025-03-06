@@ -7066,9 +7066,17 @@ Action.Invest = new Action("Invest", {
     },
     finish() {
         handleSkillExp(this.skills);
-        goldInvested += resources.gold;
-        if (goldInvested > 999999999999) goldInvested = 999999999999;
-        resetResource("gold");
+
+        //Looks like something (maybe very high accelerations?) can give you a gold value of NaN.  If so, don't corrupt
+        //the save file
+        if (!isNaN(resources.gold))
+        {
+            goldInvested += resources.gold;
+            if (goldInvested > 999999999999) goldInvested = 999999999999;
+
+            //Don't reset the gold value if it's NaN.  This should make it a bit easier to see what went wrong.
+            resetResource("gold");
+        }
         if (storyFlags.investedOne) setStoryFlag("investedTwo");
         setStoryFlag("investedOne");
         view.requestUpdate("updateActionTooltips", null);
