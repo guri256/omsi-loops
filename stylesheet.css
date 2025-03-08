@@ -388,6 +388,9 @@ ul#faq > li {
 .colon-after::after {
     content: ":";
 }
+.alert {
+    color: var(--alert-color);
+}
 
 /* These utility classes set a "stat context" for this element and its descendants */
 .stat-Str {--stat-color: var(--stat-Str-color);}
