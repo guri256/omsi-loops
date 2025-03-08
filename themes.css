@@ -382,7 +382,7 @@
     --link-color: hsl(30, 100%, 40%);
     --link-visited-color: hsl(90, 50%, 40%);
     --link-active-color: hsl(180, 100%, 45.1%);
-    --alert-color: hsl(180, 100%, 50%);
+    --alert-color: red;
     --body-background: hsl(307.5, 17.4%, 91%);
     --body-background-transparent: hsla(307.5, 17.4%, 91%, 0);
 
@@ -494,7 +494,7 @@
     --link-color: hsl(29.8, 100%, 67.6%);
     --link-visited-color: hsl(90, 100%, 71.8%);
     --link-active-color: hsl(180, 100%, 45.1%);
-    --alert-color: hsl(180, 100%, 50%);
+    --alert-color: red;
     --body-background: hsl(300, 17.1%, 8%);
     --body-background-transparent: hsla(300, 17.1%, 8%, 0);
 
