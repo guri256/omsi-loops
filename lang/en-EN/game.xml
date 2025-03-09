@@ -14,6 +14,14 @@
             <b>Recent changes</b>
             ]]></version>
             -->
+            <version caption="Guri-Mainline-1.0"><![CDATA[
+            <b>Recent changes</b>
+            • Add story for Heal the Sick<br>
+            • Fix story unlocks for Feast<br>
+            • Fix stories unlocking too soon<br>
+            • Tweak when some stories are visible.<br>
+            • Add a second method, later, for exploring Large Dungeon.<br>
+            ]]></version>
             <version caption="Latest"><![CDATA[
             <b>Recent changes</b>
             • Fixed the first Wander action failing when fractional mana consumption is enabled in Extras.<br>
