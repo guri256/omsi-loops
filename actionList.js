@@ -5635,6 +5635,7 @@ Action.GreatFeast = new MultipartAction("Great Feast", {
         return Math.ceil(5000 * (getBuffLevel("Feast") + 1) * getSkillBonus("Gluttony"));
     },
     finish() {
+        setStoryFlag("feastAttempted")
         view.requestUpdate("updateBuff", "Feast");
     },
 });
@@ -6426,6 +6427,8 @@ Action.Escape = new Action("Escape", {
         unlockTown(7);
     },
     story(completed) {
+        //FIXME: This will (unfortunately) give the story completion for creating the looping potion, even
+        //if the player didn't, because completing story N will also complete all stories less than N.
         unlockGlobalStory(10);
     },
 });
@@ -6457,7 +6460,7 @@ Action.OpenPortal = new Action("Open Portal", {
         return getExploreProgress() > 50;
     },
     unlocked() {
-        return getExploreProgress() >= 75;
+        return getExploreProgress() >= 75 && getSkillLevel("Restoration") >= 1000;
     },
     canStart() {
         return getSkillLevel("Restoration") >= 1000;
@@ -7063,9 +7066,17 @@ Action.Invest = new Action("Invest", {
     },
     finish() {
         handleSkillExp(this.skills);
-        goldInvested += resources.gold;
-        if (goldInvested > 999999999999) goldInvested = 999999999999;
-        resetResource("gold");
+
+        //Looks like something (maybe very high accelerations?) can give you a gold value of NaN.  If so, don't corrupt
+        //the save file
+        if (!isNaN(resources.gold))
+        {
+            goldInvested += resources.gold;
+            if (goldInvested > 999999999999) goldInvested = 999999999999;
+
+            //Don't reset the gold value if it's NaN.  This should make it a bit easier to see what went wrong.
+            resetResource("gold");
+        }
         if (storyFlags.investedOne) setStoryFlag("investedTwo");
         setStoryFlag("investedOne");
         view.requestUpdate("updateActionTooltips", null);
@@ -7318,11 +7329,14 @@ Action.ImbueSoul = new MultipartAction("Imbue Soul", {
     storyReqs(storyNum) {
         switch(storyNum) {
             case 1: return storyFlags.soulInfusionAttempted;
-            case 2: return buffs["Imbuement3"].amt > 0;
-            case 3: return buffs["Imbuement3"].amt > 6;
-            case 4: return buffs["Imbuement"].amt > 499
-                        && buffs["Imbuement2"].amt > 499
-                        && buffs["Imbuement3"].amt > 6;
+            //Protect these with a check for soulInfusionAttempted, so they don't "finish" instantly
+            //on prestige.
+            case 2: return storyFlags.soulInfusionAttempted && buffs["Imbuement3"].amt > 0;
+            case 3: return storyFlags.soulInfusionAttempted && buffs["Imbuement3"].amt > 6;
+            case 4: return storyFlags.soulInfusionAttempted &&
+                        buffs["Imbuement"].amt > 499 &&
+                        buffs["Imbuement2"].amt > 499 &&
+                        buffs["Imbuement3"].amt > 6;
         }
     },
     stats: {
@@ -7369,6 +7383,7 @@ Action.ImbueSoul = new MultipartAction("Imbue Soul", {
         return getBuffLevel("Imbuement") > 499 && getBuffLevel("Imbuement2") > 499;
     },
     finish() {
+        setStoryFlag("soulInfusionAttempted")
         view.requestUpdate("updateBuff", "Imbuement3");
         capAllTraining();
         adjustTrainingExpMult();
