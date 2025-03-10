@@ -21,6 +21,8 @@
             • Fix stories unlocking too soon<br>
             • Tweak when some stories are visible.<br>
             • Add a second method, later, for exploring Large Dungeon.<br>
+            • Fixes remaining mana on actions<br>
+            • Google Drive is broken, because this endpoint isn't whitelisted.<br>
             ]]></version>
             <version caption="Latest"><![CDATA[
             <b>Recent changes</b>
