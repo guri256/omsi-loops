@@ -4941,9 +4941,8 @@ Action.Mercantilism = new Action("Mercantilism", {
     },
     finish() {
         handleSkillExp(this.skills);
-        view.requestUpdate("adjustManaCost", "Buy Mana Z1");
-        view.requestUpdate("adjustManaCost", "Buy Mana Z3");
-        view.requestUpdate("adjustManaCost", "Buy Mana Z5");
+        //Needed for Mercantilism levelup
+        view.requestUpdate("adjustGoldCosts");
     },
 });
 
@@ -7073,6 +7072,8 @@ Action.Invest = new Action("Invest", {
     },
     finish() {
         handleSkillExp(this.skills);
+        //Needed for Mercantilism levelup
+        view.requestUpdate("adjustGoldCosts");
 
         //Looks like something (maybe very high accelerations?) can give you a gold value of NaN.  If so, don't corrupt
         //the save file
@@ -7127,6 +7128,9 @@ Action.CollectInterest = new Action("Collect Interest", {
     },
     finish() {
         handleSkillExp(this.skills);
+        //Needed for Mercantilism levelup
+        view.requestUpdate("adjustGoldCosts");
+
         let interestGold = Math.floor(goldInvested * .001);
         addResource("gold", interestGold);
         setStoryFlag("interestCollected");
