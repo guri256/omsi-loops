@@ -168,6 +168,10 @@ class Actions {
                 while (curProgress >= loopCost(segment)) {
                     curProgress -= loopCost(segment);
                     // segment finished
+                    if (curAction.segmentFinished) {
+                        curAction.segmentFinished();
+                        partUpdateRequired = true;
+                    }
                     if (segment === curAction.segments - 1) {
                         // part finished
                         if (curAction.name === "Dark Ritual" && towns[curAction.townNum][curAction.varName] >= 4000000) setStoryFlag("darkRitualThirdSegmentReached");
@@ -191,10 +195,6 @@ class Actions {
                             break manaLoop;
                         }
                         towns[curAction.townNum][curAction.varName] = curProgress;
-                    }
-                    if (curAction.segmentFinished) {
-                        curAction.segmentFinished();
-                        partUpdateRequired = true;
                     }
                     segment++;
                     manaLeftForCurrentSegment = Math.min(manaLeft, getMaxTicksForStat(curAction, curAction.loopStats[segment], false));
