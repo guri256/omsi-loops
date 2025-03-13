@@ -6291,8 +6291,8 @@ Action.RescueSurvivors = new MultipartAction("Rescue Survivors", {
     loopsFinished(loopCounter = towns[6].RescueLoopCounter) {
         addResource("reputation", 4);
         setStoryFlag("survivorRescued");
-        if (loopCounter >= 6) setStoryFlag("rescued6Survivors");
-        if (loopCounter >= 20) setStoryFlag("rescued20Survivors");
+        if (loopCounter >= 6*3) setStoryFlag("rescued6Survivors");
+        if (loopCounter >= 20*3) setStoryFlag("rescued20Survivors");
     },
     getPartName(loopCounter = towns[6].RescueLoopCounter) {
         return `${_txt(`actions>${getXMLName(this.name)}>label_part`)} ${numberToWords(Math.floor((loopCounter + 0.0001) / this.segments + 1))}`;
