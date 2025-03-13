@@ -2470,7 +2470,7 @@ Action.BirdWatching = new Action("Bird Watching", {
         return resources.glasses;
     },
     visible() {
-        return towns[1].getLevel("Flowers") >= 30;
+        return towns[1].getLevel("Flowers") >= 30 || towns[1].getLevel("Forest") >= 80;
     },
     unlocked() {
         return towns[1].getLevel("Flowers") >= 80;
