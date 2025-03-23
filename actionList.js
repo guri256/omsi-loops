@@ -3110,14 +3110,14 @@ Action.AdventureGuild = new MultipartAction("Adventure Guild", {
                 Math.sqrt(1 + totalCompletions / 1000);
     },
     loopsFinished() {
-        if (curAdvGuildSegment >= 0) setStoryFlag("advGuildRankEReached");
-        if (curAdvGuildSegment >= 3) setStoryFlag("advGuildRankDReached");
-        if (curAdvGuildSegment >= 6) setStoryFlag("advGuildRankCReached");
-        if (curAdvGuildSegment >= 9) setStoryFlag("advGuildRankBReached");
-        if (curAdvGuildSegment >= 12) setStoryFlag("advGuildRankAReached");
-        if (curAdvGuildSegment >= 15) setStoryFlag("advGuildRankSReached");
-        if (curAdvGuildSegment >= 27) setStoryFlag("advGuildRankUReached");
-        if (curAdvGuildSegment >= 39) setStoryFlag("advGuildRankGodlikeReached");
+        if (curAdvGuildSegment >= 3) setStoryFlag("advGuildRankEReached");
+        if (curAdvGuildSegment >= 6) setStoryFlag("advGuildRankDReached");
+        if (curAdvGuildSegment >= 9) setStoryFlag("advGuildRankCReached");
+        if (curAdvGuildSegment >= 12) setStoryFlag("advGuildRankBReached");
+        if (curAdvGuildSegment >= 15) setStoryFlag("advGuildRankAReached");
+        if (curAdvGuildSegment >= 18) setStoryFlag("advGuildRankSReached");
+        if (curAdvGuildSegment >= 30) setStoryFlag("advGuildRankUReached");
+        if (curAdvGuildSegment >= 42) setStoryFlag("advGuildRankGodlikeReached");
     },
     segmentFinished() {
         curAdvGuildSegment++;
@@ -3327,14 +3327,14 @@ Action.CraftingGuild = new MultipartAction("Crafting Guild", {
                 Math.sqrt(1 + totalCompletions / 1000);
     },
     loopsFinished() {
-        if (curCraftGuildSegment >= 0) setStoryFlag("craftGuildRankEReached");
-        if (curCraftGuildSegment >= 3) setStoryFlag("craftGuildRankDReached");
-        if (curCraftGuildSegment >= 6) setStoryFlag("craftGuildRankCReached");
-        if (curCraftGuildSegment >= 9) setStoryFlag("craftGuildRankBReached");
-        if (curCraftGuildSegment >= 12) setStoryFlag("craftGuildRankAReached");
-        if (curCraftGuildSegment >= 15) setStoryFlag("craftGuildRankSReached");
-        if (curCraftGuildSegment >= 27) setStoryFlag("craftGuildRankUReached");
-        if (curCraftGuildSegment >= 39) setStoryFlag("craftGuildRankGodlikeReached");
+        if (curCraftGuildSegment >= 3) setStoryFlag("craftGuildRankEReached");
+        if (curCraftGuildSegment >= 6) setStoryFlag("craftGuildRankDReached");
+        if (curCraftGuildSegment >= 9) setStoryFlag("craftGuildRankCReached");
+        if (curCraftGuildSegment >= 12) setStoryFlag("craftGuildRankBReached");
+        if (curCraftGuildSegment >= 15) setStoryFlag("craftGuildRankAReached");
+        if (curCraftGuildSegment >= 18) setStoryFlag("craftGuildRankSReached");
+        if (curCraftGuildSegment >= 30) setStoryFlag("craftGuildRankUReached");
+        if (curCraftGuildSegment >= 42) setStoryFlag("craftGuildRankGodlikeReached");
     },
     segmentFinished() {
         curCraftGuildSegment++;
@@ -5474,16 +5474,16 @@ Action.FightFrostGiants = new MultipartAction("Fight Frost Giants", {
     },
     segmentFinished() {
         curFightFrostGiantsSegment++;
-        if (curFightFrostGiantsSegment >= 6) setStoryFlag("giantGuildRankEReached");
-        if (curFightFrostGiantsSegment >= 12) setStoryFlag("giantGuildRankDReached");
-        if (curFightFrostGiantsSegment >= 18) setStoryFlag("giantGuildRankCReached");
-        if (curFightFrostGiantsSegment >= 24) setStoryFlag("giantGuildRankBReached");
-        if (curFightFrostGiantsSegment >= 30) setStoryFlag("giantGuildRankAReached");
-        if (curFightFrostGiantsSegment >= 36) setStoryFlag("giantGuildRankSReached");
-        if (curFightFrostGiantsSegment >= 42) setStoryFlag("giantGuildRankSSReached");
-        if (curFightFrostGiantsSegment >= 48) setStoryFlag("giantGuildRankSSSReached");
-        if (curFightFrostGiantsSegment >= 54) setStoryFlag("giantGuildRankUReached");
-        if (curFightFrostGiantsSegment >= 60) setStoryFlag("giantGuildRankGodlikeReached");
+        if (curFightFrostGiantsSegment >= 3) setStoryFlag("giantGuildRankEReached");
+        if (curFightFrostGiantsSegment >= 9) setStoryFlag("giantGuildRankDReached");
+        if (curFightFrostGiantsSegment >= 15) setStoryFlag("giantGuildRankCReached");
+        if (curFightFrostGiantsSegment >= 21) setStoryFlag("giantGuildRankBReached");
+        if (curFightFrostGiantsSegment >= 27) setStoryFlag("giantGuildRankAReached");
+        if (curFightFrostGiantsSegment >= 33) setStoryFlag("giantGuildRankSReached");
+        if (curFightFrostGiantsSegment >= 39) setStoryFlag("giantGuildRankSSReached");
+        if (curFightFrostGiantsSegment >= 45) setStoryFlag("giantGuildRankSSSReached");
+        if (curFightFrostGiantsSegment >= 51) setStoryFlag("giantGuildRankUReached");
+        if (curFightFrostGiantsSegment >= 57) setStoryFlag("giantGuildRankGodlikeReached");
     },
     getPartName() {
         return `${getFrostGiantsRank().name}`;
@@ -6182,15 +6182,15 @@ Action.FightJungleMonsters = new MultipartAction("Fight Jungle Monsters", {
         //I.e., the sloth fight is segments 6, 7 and 8, so the unlock
         //happens when the 8th segment is done and the current segment
         //is 9 or more.
-        if (curFightJungleMonstersSegment > 8) setStoryFlag("monsterGuildRankDReached");
-        if (curFightJungleMonstersSegment > 14) setStoryFlag("monsterGuildRankCReached");
-        if (curFightJungleMonstersSegment > 20) setStoryFlag("monsterGuildRankBReached");
-        if (curFightJungleMonstersSegment > 26) setStoryFlag("monsterGuildRankAReached");
-        if (curFightJungleMonstersSegment > 32) setStoryFlag("monsterGuildRankSReached");
-        if (curFightJungleMonstersSegment > 38) setStoryFlag("monsterGuildRankSSReached");
-        if (curFightJungleMonstersSegment > 44) setStoryFlag("monsterGuildRankSSSReached");
-        if (curFightJungleMonstersSegment > 50) setStoryFlag("monsterGuildRankUReached");
-        if (curFightJungleMonstersSegment > 56) setStoryFlag("monsterGuildRankGodlikeReached");
+        if (curFightJungleMonstersSegment >= 9) setStoryFlag("monsterGuildRankDReached");
+        if (curFightJungleMonstersSegment >= 15) setStoryFlag("monsterGuildRankCReached");
+        if (curFightJungleMonstersSegment >= 21) setStoryFlag("monsterGuildRankBReached");
+        if (curFightJungleMonstersSegment >= 27) setStoryFlag("monsterGuildRankAReached");
+        if (curFightJungleMonstersSegment >= 33) setStoryFlag("monsterGuildRankSReached");
+        if (curFightJungleMonstersSegment >= 39) setStoryFlag("monsterGuildRankSSReached");
+        if (curFightJungleMonstersSegment >= 45) setStoryFlag("monsterGuildRankSSSReached");
+        if (curFightJungleMonstersSegment >= 51) setStoryFlag("monsterGuildRankUReached");
+        if (curFightJungleMonstersSegment >= 57) setStoryFlag("monsterGuildRankGodlikeReached");
         // Additional thing?
     },
     getPartName() {
