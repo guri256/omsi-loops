@@ -1240,7 +1240,7 @@
         <spatiomancy>
             <label>Spatiomancy</label>
             <desc>Who knew bending reality to your will could be so useful!</desc>
-            <desc2><![CDATA[Mana Geyser and Mana Well action cost are reduced to the original / (1 + level / 100).<br>
+            <desc2><![CDATA[The mana costs for the Mana Geyser and Mana Well actions are reduced to the original / (1 + level / 100).<br>
             Houses to build increased by 1% per level from 1 - 500.<br>
             The following actions are increased by 0.5% per level in their level range.<br>
             101-300 Locked houses<br>

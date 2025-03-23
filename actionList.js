@@ -7077,7 +7077,7 @@ Action.Invest = new Action("Invest", {
 
         //Looks like something (maybe very high accelerations?) can give you a gold value of NaN.  If so, don't corrupt
         //the save file
-        if (!isNaN(resources.gold))
+        if (isFinite(resources.gold))
         {
             goldInvested += resources.gold;
             if (goldInvested > 999999999999) goldInvested = 999999999999;
