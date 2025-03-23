@@ -459,8 +459,8 @@ function setSkillBonusType(skill) {
     let exponent;
     let addition;
     if (skill === "Dark" || skill === "Mercantilism" || skill === "Divine" || skill === "Wunderkind" || skill === "Thievery" || skill === "Leadership") {
-    multiplier = 1/60;
-    exponent = 0.5;
+        multiplier = 1/60;
+        exponent = 0.5;
     }
     else if (skill === "Chronomancy") {
         multiplier = 1/60;
