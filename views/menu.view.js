@@ -12,6 +12,7 @@ const menuView = Views.registerView("menu", {
         html += Views.menu.htmlChallengeMenu();
         html += Views.menu.htmlTotalsMenu();
         html += Views.menu.htmlPrestigeMenu();
+        html += Views.menu.htmlWarningMenu();
         return html;
     },
     htmlMenusMenu() {
@@ -319,6 +320,24 @@ const menuView = Views.registerView("menu", {
             </div>
         </li>`;
         return html;
+    },
+    htmlWarningMenu() {
+        const html = 
+        `<li id='browser_warningMenu' tabindex='0' style='display:inline-block;height:30px;margin-left:10px;' class='showthatH alert'>
+            CRITICAL ALERT
+            <div class='showthisH'>
+                <p>
+                There is currently a bug in the latest versions of Chrome (and browsers based on it, like Edge; your browser counts)
+                which can cause the game to fail unexpectedly. There is nothing we can do about this other than hope Google fixes what
+                they broke; if you have issues, export your save and import it into another browser like Firefox. If your game is working
+                and you have not updated this browser recently, do not update it right now or your game may break!
+                </p><p>
+                If you would like to help Google realize what they have accidentally broken, you can report that you are affected by
+                clicking the +1 button on <a href="https://issues.chromium.org/issues/401652934">the issue page</a>.
+                </p>
+            </div>
+        </li>`;
+        return navigator.vendor === 'Google Inc.' ? html : "";
     },
     challenges() {
         let html = 
